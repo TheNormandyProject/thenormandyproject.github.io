@@ -1,0 +1,82 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: "#da373d",
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                animation: {
+                    "shine": "shine 3s linear infinite",
+                    "shineGlow": "shineGlow 3s linear infinite"
+                },
+                colors: {
+                    brand: "rgb(34, 84, 159)",
+                    brandLight: "rgb(84, 134, 209)",
+                    brandTeal: "rgb(84, 204, 209)",
+                    brandPurp: "rgb(134, 84, 209)"
+                },
+                keyframes: {
+                    shineGlow: {
+                        "0%": {
+                            "background-color": "rgb(84, 134, 209)"
+                        },
+                        "45%": {
+                            "background-color": "rgb(134, 84, 209)"
+                        },
+                        "100%": {
+                            "background-color": "rgb(84, 134, 209)"
+                        }
+                    },
+                    shine: {
+                        "0%": {
+                            "left": "-6rem"
+                        },
+                        "20%": {
+                            "left": "100%"
+                        },
+                        "100%": {
+                            "left": "100%"
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
+<div id="root">
+    <main class="container-fluid bg-brand h-screen">
+        <section class="flex flex-column h-full items-center">
+            <a href="https://thenormandyproject.podia.com" role="navigation"
+                class="relative xs:w-2/3 md:w-1/3 py-6 px-6 rounded shadow-md text-3xl font-bold underline select-none bg-white text-brand text-center no-underline m-auto overflow-hidden after:absolute after:hidden after:top-0 after:w-24 after:h-full after:-left-24 after:hover:block after:hover:animate-shine hover:animate-shineGlow hover:bg-brandLight hover:text-white transition-all">The
+                Normandy Project</a>
+        </section>
+    </main>
+</div>
+<style>
+    main>section>a:first-child:last-child::after {
+        background-image: linear-gradient(120deg,
+                rgba(255, 255, 255, 0) 30%,
+                rgba(255, 255, 255, .8),
+                rgba(255, 255, 255, 0) 70%);
+    }
+</style>
+
+</html>
