@@ -14,8 +14,7 @@ function App() {
                     <div className={"flex flex-col container h-full mx-auto items-center"}>
                         <a
                         href="https://thenormandyproject.podia.com" role={"navigation"}
-                        className={"relative md:w-2/3 py-6 px-6 rounded shadow-md text-3xl font-bold select-none bg-white text-brand text-center no-underline m-auto overflow-hidden after:absolute after:top-0 after:w-24 after:h-full after:-left-24 hover:after:shines hover:animate-shineGlow hover:bg-brandLight hover:text-white transition-all"}>The
-                        Normandy Project</a>
+                        className={"relative md:w-2/3 py-6 px-6 rounded shadow-md text-3xl font-bold select-none bg-white text-brand text-center no-underline m-auto overflow-hidden after:absolute after:top-0 after:w-24 after:h-full after:-left-24 hover:after:shines hover:animate-shineGlow hover:bg-brandLight hover:text-white transition-all"}>Enter</a>
                     </div>
                 </section>
             </article>
