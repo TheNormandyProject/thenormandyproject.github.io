@@ -14,7 +14,8 @@ module.exports = {
                 "brand": "hsl(216, 65%, 38%)",
                 "brandLight": "hsl(216, 58%, 57%)",
                 "brandTeal": "hsl(182, 58%, 57%)",
-                "brandPurp": "hsl(264, 58%, 57%)"
+                "brandPurp": "hsl(264, 58%, 57%)",
+                "brandN7Red" : "hsl(358, 88%, 41%)"
             },
             keyframes: {
                 shineGlow: {
