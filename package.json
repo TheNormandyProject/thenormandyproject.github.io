@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-anime": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-router": "^6.6.2"
