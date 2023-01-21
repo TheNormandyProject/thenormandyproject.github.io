@@ -4,6 +4,7 @@ import { ReactComponent as ViteLogo } from "./svg/vite.svg";
 import { ReactComponent as ReactLogo } from "./svg/react.svg";
 
 /* Normamdy UI */
+import { ReactComponent as Credits } from "./normandy-ui/Credits.svg";
 import { ReactComponent as N7Logo } from "./normandy-ui/N7.svg";
 import { ReactComponent as RenegadeLogo } from "./normandy-ui/Renegade.svg";
 import { ReactComponent as ParagonLogo } from "./normandy-ui/Paragon.svg";
@@ -22,6 +23,7 @@ import { ReactComponent as NormandyLetterY } from "./normandy-ui/NormandyLetter_
 export {
     ViteLogo,
     ReactLogo,
+    Credits,
     N7Logo,
     AllianceLogo,
     CerberusLogo,

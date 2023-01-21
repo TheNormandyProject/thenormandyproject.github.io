@@ -11,7 +11,8 @@ import {
     NormandyLetterY,
     ParagonLogo,
     RenegadeLogo,
-    N7Logo
+    N7Logo,
+    Credits
 } from "../../assets/SVGs";
 
 export const HomeLanding = () => {
@@ -31,8 +32,8 @@ export const HomeLanding = () => {
                         <NormandyLetterY id="NormandyLetterY" className={"NormandyLetter fill-transparent stroke-white h-16"}/>
                     </div>
                     <nav className={"flex flex-col md:flex-row gap-4 w-full px-4 md:px-0 ButtonGroupFadeIn opacity-0"}>
-                        <a className={"flex-1 hollow icon-button button-white"} href="https://thenormandyproject.scot">
-                            <AllianceLogo className={"h-6"} />
+                        <a className={"flex-1 hollow icon-button button-white"} href="/store">
+                            <Credits className={"h-6"} />
                             <span className="w-full -ml-6">Store</span>
                         </a>
                         <a className={"flex-1 hollow icon-button button-white"} href="https://ko-fi.com/thenormandyproject">
