@@ -6,14 +6,188 @@
 
 @layer components {
 
-    .button-blue {
-        @apply bg-blue-600 text-white text-center font-bold py-2 px-4 rounded;
-        @apply hover:bg-blue-700 hover:cursor-pointer;
+    /* Button */
+
+    /* // Button Variants \\ */
+
+    .hollow[class*="button-"] {
+        @apply bg-transparent;
     }
+
+    .button-white {
+        @apply bg-white text-stone-900 text-center font-bold border-stone-100 border-2 py-2 px-4 rounded;
+        @apply hover:bg-stone-200 hover:border-stone-300 hover:cursor-pointer;
+        @apply fill-stone-900;
+    }
+
+    .hollow.button-white {
+        @apply text-white;
+        @apply hover:text-stone-900;
+        @apply fill-white;
+        @apply hover:fill-stone-900;
+    }
+
+    .button-red {
+        @apply bg-red-600 text-red-50 text-center font-bold border-red-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-red-700 hover:border-red-800 hover:cursor-pointer;
+        @apply fill-red-900;
+    }
+
+    .hollow.button-red {
+        @apply text-red-600;
+        @apply hover:text-red-50;
+    }
+
+    .button-orange {
+        @apply bg-orange-600 text-orange-50 text-center font-bold border-orange-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-orange-700 hover:border-orange-800 hover:cursor-pointer;
+        @apply fill-orange-900;
+    }
+
+    .hollow.button-orange {
+        @apply text-orange-600;
+        @apply hover:text-orange-50;
+    }
+
+    .button-yellow {
+        @apply bg-yellow-600 text-yellow-50 text-center font-bold border-yellow-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-yellow-500 hover:border-yellow-800 hover:cursor-pointer;
+        @apply fill-yellow-900;
+    }
+
+    .hollow.button-yellow {
+        @apply text-yellow-600;
+        @apply hover:text-yellow-50;
+    }
+
+    .button-green {
+        @apply bg-green-600 text-green-50 text-center font-bold border-green-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-green-700 hover:border-green-800 hover:cursor-pointer;
+        @apply fill-green-900;
+    }
+
+    .hollow.button-green {
+        @apply text-green-600;
+        @apply hover:text-green-50;
+    }
+
+    .button-blue {
+        @apply bg-blue-600 text-blue-50 text-center font-bold border-blue-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-blue-700 hover:border-blue-800 hover:cursor-pointer;
+        @apply fill-blue-900;
+    }
+
+    .hollow.button-blue {
+        @apply text-blue-600;
+        @apply hover:text-blue-50;
+    }
+
+    .button-indigo {
+        @apply bg-indigo-600 text-indigo-50 text-center font-bold border-indigo-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-indigo-700 hover:border-indigo-800 hover:cursor-pointer;
+        @apply fill-indigo-900;
+    }
+
+    .hollow.button-indigo {
+        @apply text-indigo-600;
+        @apply hover:text-indigo-50;
+    }
+
+    .button-violet {
+        @apply bg-violet-600 text-violet-50 text-center font-bold border-violet-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-violet-700 hover:border-violet-800 hover:cursor-pointer;
+        @apply fill-violet-900;
+    }
+
+    .hollow.button-violet {
+        @apply text-violet-600;
+        @apply hover:text-violet-50;
+    }
+
+    .button-pink {
+        @apply bg-pink-600 text-pink-50 text-center font-bold border-pink-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-pink-700 hover:border-pink-800 hover:cursor-pointer;
+        @apply fill-pink-900;
+    }
+
+    .hollow.button-pink {
+        @apply text-pink-600;
+        @apply hover:text-pink-50;
+    }
+
+    .button-rose {
+        @apply bg-rose-600 text-rose-50 text-center font-bold border-rose-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-rose-700 hover:border-rose-800 hover:cursor-pointer;
+        @apply fill-rose-900;
+    }
+
+    .hollow.button-rose {
+        @apply text-rose-600;
+        @apply hover:text-rose-50;
+    }
+
+    .button-paragon {
+        @apply bg-paragon-600 text-paragon-50 text-center font-bold border-paragon-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-paragon-700 hover:border-paragon-800 hover:cursor-pointer;
+        @apply fill-paragon-900;
+    }
+
+    .hollow.button-paragon {
+        @apply text-paragon-600;
+        @apply hover:text-paragon-50;
+    }
+
+    .button-renegade {
+        @apply bg-renegade-600 text-renegade-50 text-center font-bold border-renegade-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-renegade-700 hover:border-renegade-800 hover:cursor-pointer;
+        @apply fill-renegade-900;
+    }
+
+    .hollow.button-renegade {
+        @apply text-renegade-600;
+        @apply hover:text-renegade-50;
+    }
+
+    .button-alliance {
+        @apply bg-alliance-600 text-alliance-50 text-center font-bold border-alliance-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-alliance-700 hover:border-alliance-800 hover:cursor-pointer;
+        @apply fill-alliance-900;
+    }
+
+    .hollow.button-alliance {
+        @apply text-alliance-600;
+        @apply hover:text-alliance-50;
+    }
+
+    .button-cerberus {
+        @apply bg-cerberus-600 text-cerberus-50 text-center font-bold border-cerberus-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-cerberus-700 hover:border-cerberus-800 hover:cursor-pointer;
+        @apply fill-cerberus-900;
+    }
+
+    .hollow.button-cerberus {
+        @apply text-cerberus-600;
+        @apply hover:text-cerberus-50;
+    }
+
+    .button-n7 {
+        @apply bg-n7-600 text-n7-50 text-center font-bold border-n7-700 border-2 py-2 px-4 rounded;
+        @apply hover:bg-n7-700 hover:border-n7-800 hover:cursor-pointer;
+        @apply fill-n7-900;
+    }
+
+    .hollow.button-n7 {
+        @apply text-n7-600;
+        @apply hover:text-n7-50;
+    }
+
+    /* // Icon Button \\ */
 
     .icon-button {
         @apply flex flex-row;
     }
+
+    /* Stripes */
 
     .bg-stripes-cyan {
         background-color: #22d3ee1a;
