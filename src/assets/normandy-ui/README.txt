@@ -1,0 +1,2 @@
+All these assets were made by hand inside Adobe Illustrator by The Normandy Project.
+They were created specifically for the Normandy Project and may be distributed in future as an open source Icon Glyph project.
