@@ -13,7 +13,7 @@ import {
     RenegadeLogo,
     N7Logo,
     Credits
-} from "../assets/SVGs";
+} from "../../assets/SVGs";
 
 export const Home = () => {
 

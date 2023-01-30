@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { FaTimes } from "react-icons/fa";
-import { GiHamburgerMenu, GiStarSattelites, GiShoppingBag, GiClawHammer, GiSparkles } from "react-icons/gi";
-import { N7Logo } from "../assets/SVGs";
+import { FaTimes } from "react-icons/fa/index.js";
+import { GiHamburgerMenu, GiStarSattelites, GiShoppingBag, GiClawHammer, GiSparkles } from "react-icons/gi/index.js";
+import { NormandyLetterN } from "../../assets/SVGs";
 
 import { Accessories } from "./sections/Store.Accessories";
 import { Digital } from "./sections/Store.Digital";
@@ -18,7 +18,7 @@ const StoreNav = () => {
 
     return <header className={"absolute top-0 left-0 bg-slate-900 text-white h-16 w-full"}>
         <nav className={"flex items-center h-full py-4 pl-8"}>
-            <a href="/"><N7Logo className={"fill-white hover:fill-n7-600 h-4"} /></a>
+            <a href="/"><NormandyLetterN className={"fill-white hover:fill-n7-600 h-4"} /></a>
             <div className={"hidden sm:flex items-center gap-4 h-full ml-auto"}>
                 <a href="/store" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>Featured</a>
                 <a href="/store/limited" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>LIMITED</a>
@@ -95,8 +95,8 @@ const StoreMain = () => {
         <section className={"bg-slate-900 text-white h-screen w-full pt-16"}>
             <article className={"flex flex-col h-full w-full justify-center items-center overflow-hidden"}>
                 <figure className={"HammerMotion relative"}>
-                    <GiClawHammer size="12rem" className={"Hammer h-48"} />
-                    <GiSparkles size="4rem" className={"Sparks absolute bottom-4 -right-1"} />
+                    <GiClawHammer size="12em" className={"Hammer h-48"} />
+                    <GiSparkles size="4em" className={"Sparks absolute bottom-4 -right-1"} />
                 </figure>
                 <h1 className={"text-3xl sm:text-4xl md:text-6xl lg:text-7xl mt-4 select-none"}>COMING SOON!</h1>
             </article>
@@ -162,9 +162,14 @@ export const StorePage = (props: StorePageProps) => {
 
 }
 
+export default StorePage;
+
 export const Store = {
 
     Page: StorePage,
+    Nav: StoreNav,
+    Main: StoreMain,
+    Footer: StoreFooter,
     Accessories,
     Digital,
     Limited,
