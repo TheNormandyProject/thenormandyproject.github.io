@@ -1,34 +1,36 @@
 ---
+import "@styles/global.css";
+
+const defaultTitle = "The Normandy Project";
+const defaultDescription = "Mass Effect songs and videos made from the game files!";
+
 interface Props {
     title?: string,
-    description?: string, 
-    richMeta? : {
-        title?: string,
-        description?: string, 
-        type?: string
-    }
+    description?: string 
+    type? : string
 }
-import "@styles/global.css";
-const { title, url, richMeta } = Astro.props;
+const { title = defaultTitle, description = defaultDescription, url, type = "website" } = Astro.props;
+
+const titleParsed = (title === defaultTitle ? `Home | ${defaultTitle}`: `${title} | ${defaultTitle}`);
 ---
 <!DOCTYPE html>
 <html lang="en_GB">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="The Normandy Project" />
-    <meta name="description" content="Mass Effect songs and videos made from the game files!" />
-    <meta property="og:type" content="website" />
+    <meta name="title" content={titleParsed} />
+    <meta name="description" content={description} />
+    <meta property="og:type" content={type} />
     <meta property="og:site_name" content="The Normandy Project" />
-    <meta property="og:title" content="The Normandy Project" />
+    <meta property="og:title" content={titleParsed} />
     <meta property="og:description" content="Mass Effect songs and videos made from the game files!" />
-    <meta property="og:url" content={`https://thenormandyproject.github.io${url ? "/" + url : ""}`} />
+    <meta property="og:url" content={`https://thenormandyproject.github.io${url && "/" + url }`} />
     <meta property="og:image" content="https://thenormandyproject.github.io/favicon/favicon.svg" />
     <meta property="og:image:height" content="200" />
     <meta property="og:image:width" content="200" />
     <meta property="og:image:alt" content="A Logo consisting of a stylised version of the Latin Script character N" />
     <meta property="og:locale" content="en_GB" />
-    <title>{`${ title ? (title + " | The Normandy Project") : "The Normandy Project"}`}</title>
+    <title>{titleParsed}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
 </head>
 <body>
