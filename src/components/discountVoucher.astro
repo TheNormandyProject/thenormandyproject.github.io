@@ -1,0 +1,74 @@
+---
+import { ParagonLogo } from 'src/assets/SVGs';
+import { BitShiftString } from '@react/Components';
+
+interface Props {
+    amount : number,
+    code : string,
+    className? : string
+}
+
+const { amount, code, className } = Astro.props;
+
+const UUID = `discountVoucher-${BitShiftString(16)}`;
+---
+
+<article
+    id={`${UUID}`}
+    class={`font-mono flex flex-col md:flex-row items-center gap-4 bg-cerberus-200 bg-striped-cerberus text-cerberus-900 text-center md:text-left border-cerberus-300 border-4 p-4 reveal-animation ${className ?? ""}`}
+    style={`box-shadow: rgb(255 235 165 / var(--tw-bg-opacity)) 0px 0px 12px 0px`}>
+    <figure class={"flex flex-col md:flex-row items-center self-stretch bg-cerberus-200 border-cerberus-300 border-2 p-4"}>
+        <ParagonLogo className={"h-16 w-16 md:h-32 md:w-32 fill-cerberus-900 drop-shadow-lg"} />
+    </figure>
+    <section class={"flex-auto bg-cerberus-200 border-cerberus-300 border-2 p-4"}>
+        <header class={"text-4xl font-bold select-none mb-4 md:mb-3 pl-2"}>DISCOUNT</header>
+        <p id="discount-code" class={"bg-cerberus-100 border-cerberus-300 border-2 text-lg font-bold mb-4 md:mb-3 p-4 selection:bg-cerberus-900 selection:text-cerberus-100"}>
+            {code}
+        </p>
+        <footer class={"text-4xl font-bold select-none md:text-right pr-2"}>{amount}%</footer>
+    </section>
+</article>
+<style>
+    /* Reveal Animation */
+    @keyframes reveal {
+
+        0% {
+            opacity: 0;
+            box-shadow: none;
+            transform: rotate3d(0, 1, 0, -180deg) scale3d(0, 0, 0);
+            filter: blur(8px) saturate(0);
+        }
+
+        20% {
+            transform: rotate3d(0, 1, 0, 0deg) scale3d(.2, .2, .2);
+        }
+
+        40% {
+            opacity: 1;
+            transform: rotate3d(0, 1, 0, -180deg) scale3d(.4, .4, .4);
+        }
+
+        60% {
+            transform: rotate3d(0, 1, 0, 0deg) scale3d(.6, .6, .6);
+        }
+
+        80% {
+            transform: rotate3d(0, 1, 0, -180deg) scale3d(.8, .8, .8);
+        }
+
+        90% {
+            box-shadow: none;
+            filter: blur(4px) saturate(0);
+        }
+
+        100% {
+            transform: rotate3d(0, 1, 0, 0deg) scale3d(1, 1, 1);
+            filter: blur(0px) saturate(1);
+        }
+
+    }
+    .reveal-animation {
+        animation: reveal 4s linear 0s 1 normal forwards;
+        transition: all 1s ease-in-out;
+    }
+</style>

@@ -2,10 +2,6 @@
  * © The Normandy Project, A Roman Empire Divided 2023-
  */
 
-/* ES Module Import
-import * as TailwindPluginScaffold from "tailwindcss/plugin";
-*/
-
 const TailwindPluginScaffold = require("tailwindcss/plugin");
 
 let logger = ( message = "" ) => {};
@@ -106,11 +102,6 @@ const PluginWrapper = ( config = { log: false } ) => {
     }
     return Plugin;
 }
-
-/* ES Module Export
-export default TailwindPluginScaffold(PluginWrapper());
-export const developer = ( config ) => TailwindPluginScaffold(PluginWrapper(config));
-*/
 
 module.exports = {
     default: TailwindPluginScaffold(PluginWrapper()),

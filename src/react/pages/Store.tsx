@@ -16,25 +16,41 @@ const StoreNav = () => {
     const [navMenuOpen, setNavMenuOpen] = useState(false);
     const [cartItems, mutateCartItems] = useState(testCart)
 
-    return <header className={"absolute top-0 left-0 bg-slate-900 text-white h-16 w-full"}>
+    return <header role="menubar" className={"absolute top-0 left-0 bg-slate-900 text-white h-16 w-full"}>
         <nav className={"flex gap-4 items-center h-full py-4 pl-8"}>
             <a href="/"><NormandyLetterN className={"fill-white hover:fill-n7-600 h-4"} /></a>
             <span>|</span>
-            <a className={"hover:text-n7-400"} href="/">Home</a>
-            <a className={"hover:text-n7-400"} href="/support">Support</a>
-            <div className={"hidden sm:flex items-center gap-4 h-full ml-auto"}>
-                <a href="/store" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>Featured</a>
-                <a href="/store/limited" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>LIMITED</a>
-                <a href="/store/shirts" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>T-Shirts</a>
-                <a href="/store/accessories" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>Accessories</a>
-                <a href="/store/digital" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>Digital</a>
-            </div>
-            <div className={"ml-auto sm:ml-4 flex"}>
+            <ul role="menu" className={"flex gap-4 items-center h-full"}>
+                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
+                    <a href="/">Home</a>
+                </li>
+                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
+                    <a href="/support">Support</a>
+                </li>
+            </ul>
+            <ul role="menu" className={"hidden md:flex items-center gap-4 h-full ml-auto"}>
+                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
+                    <a href="/store">Featured</a>
+                </li>
+                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
+                    <a href="/store/limited">LIMITED</a>
+                </li>
+                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
+                    <a href="/store/shirts">T-Shirts</a>
+                </li>
+                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
+                    <a href="/store/accessories">Accessories</a>
+                </li>
+                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
+                    <a href="/store/digital">Digital</a>
+                </li>
+            </ul>
+            <div className={"ml-auto md:ml-4 flex"}>
                 {
                     cartMenuOpen
                         ?
                         /* Is open */
-                        <a className={"flex items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"} onClick={() => {
+                        <a className={"flex items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"} role="button" onClick={() => {
                             setCartMenuOpen(!cartMenuOpen);
                             setNavMenuOpen(false);
                         }}>
@@ -42,7 +58,7 @@ const StoreNav = () => {
                         </a>
                         :
                         /* Is closed */
-                        <a className={"flex items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} onClick={() => {
+                        <a className={"flex items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} role="button" onClick={() => {
                             setCartMenuOpen(!cartMenuOpen);
                             setNavMenuOpen(false);
                         }}>
@@ -53,7 +69,7 @@ const StoreNav = () => {
                     navMenuOpen
                         ?
                         /* Is open */
-                        <a className={"flex sm:hidden items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"}onClick={() => {
+                        <a className={"flex md:hidden items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"} role="button" onClick={() => {
                             setNavMenuOpen(!navMenuOpen);
                             setCartMenuOpen(false);
                         }}>
@@ -61,7 +77,7 @@ const StoreNav = () => {
                         </a>
                         :
                         /* Is closed */
-                        <a className={"flex items-center justify-center bg-slate-800 sm:hidden h-16 w-16 cursor-pointer"}onClick={() => {
+                        <a className={"flex md:hidden items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} role="button" onClick={() => {
                             setNavMenuOpen(!navMenuOpen);
                             setCartMenuOpen(false);
                         }}>
@@ -73,23 +89,35 @@ const StoreNav = () => {
         {
             cartMenuOpen === true && <nav id="cart" className={"relative bg-slate-900 border border-n7-800 w-full sm:w-1/2 ml-auto sm:rounded-bl shadow-xl"}>
                 <h3 className={"bg-n7-800 text-white text-2xl p-4 select-none"}>Cart</h3>
-                <div className={"flex flex-col overflow-y-auto"}>
+                <ul className={"flex flex-col overflow-y-auto"}>
                     {cartItems.map((v, index) => {
-                        return <a key={index} className={"block w-full p-4 select-none cursor-pointer hover:bg-n7-900 hover:text-white"}>Test Item</a>;
+                        return <li key={index} className={"block w-full p-4 select-none cursor-pointer hover:bg-n7-900 hover:text-white"}>
+                            <a className={""}>Test Item</a>;
+                        </li>
                     })}
-                </div>
+                </ul>
             </nav>
         }
         {
             navMenuOpen === true && <nav id="nav-menu" className={"relative bg-slate-900 border border-n7-800 w-full sm:w-1/2 ml-auto sm:rounded-bl shadow-xl"}>
                 <h3 className={"bg-n7-800 text-white text-2xl p-4 select-none"}>Menu</h3>
-                <div className={"flex flex-col overflow-y-auto"}>
-                    <a href="/store" className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"}>Featured</a>
-                    <a href="/store/limited" className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"}>LIMITED</a>
-                    <a href="/store/shirts" className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"}>T-Shirts</a>
-                    <a href="/store/accessories" className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"}>Accessories</a>
-                    <a href="/store/digital" className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"}>Digital</a>
-                </div>
+                <ul role="navigation" className={"flex flex-col overflow-y-auto"}>
+                    <li>
+                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"} href="/store">Featured</a>
+                    </li>
+                    <li>
+                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"} href="/store/limited">LIMITED</a>
+                    </li>
+                    <li>
+                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"} href="/store/shirts">T-Shirts</a>
+                    </li>
+                    <li>
+                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"} href="/store/accessories">Accessories</a>
+                    </li>
+                    <li>
+                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"} href="/store/digital">Digital</a>
+                    </li>
+                </ul>
             </nav>
         }
     </header>

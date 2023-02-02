@@ -1,0 +1,17 @@
+---
+import Container from "@layouts/base.astro";
+import DiscountVoucher from "@components/discountVoucher.astro";
+---
+<Container title="Discount">
+    <main class={"flex items-center justify-center bg-slate-900 h-screen"}>
+        <DiscountVoucher className={"max-w-2xl"} amount={5} code={"MYFAVOURITESTOREONTHECITADEL"} />
+    </main>
+    <footer class={"absolute bottom-0 flex justify-center w-full p-4"}>
+        <a id="goBack" class={"font-mono button-n7"}>BACK</a>
+    </footer>
+</Container>
+<script>
+    document.getElementById("goBack")?.addEventListener("click", ()=>{
+        history.back();
+    });
+</script>

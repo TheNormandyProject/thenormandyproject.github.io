@@ -3,34 +3,54 @@ const TNPUI = require("./src/tailwind/TNPUI.cjs").default;
 
 /** @type {import("tailwindcss").Config} */
 module.exports = {
-    content: ["./src/**/*.{astro,js,ts,jsx,tsx}",],
+    content: [
+        "./src/components/**/*.astro",
+        "./src/layouts/**/*.astro",
+        "./src/pages/**/*.astro",
+        "./src/react/**/*.tsx"
+    ],
+    safelist: [
+        // safelist doesn't work, odd.
+        // "after:bg-cyan-100",
+        // {
+        //     // pattern: /(bg|fill|border)-(black|white|slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|cerberus|alliance|n7|paragon|renegade)-(50|100|200|300|400|500|600|700|800|900)/,
+        //     pattern: /(bg|text|fill|border)+/,
+        //     variants: ["hover", "after", "group-hover", "group-hover:after"]
+        // }
+    ],
     theme: {
         extend: {
             fontFamily : {
                 "mono" : ["JetBrains Mono", "monospace", "system mono", "mono"]
             },
             animation: {
-                "scroll" : "scroll 3s linear infinite",
-                "shine": "shine 3s linear infinite",
-                "shineGlow": "shineGlow 3s linear infinite",
+                "scroll" : "scroll 2s linear 0s infinite normal forwards",
+                "shine": "shine 3s linear 0s infinite normal forwards",
+                "shineGlow": "shineGlow 3s linear 0s infinite normal forwards",
                 "StrokeNormandyLetters" : "StrokeNormandyLetters 8s linear 0s 1 normal forwards",
                 "FillNormandyLetters" : "FillNormandyLetters 1s linear 2.5s 1 normal forwards",
                 "ButtonGroupFadeIn" : "ButtonGroupFadeIn 1s linear 3s 1 normal forwards"
             },
             keyframes: {
                 scroll : {
-                    "from, to" : {
+                    "0%" : {
+                        opacity: 1
+                    },
+                    "0%, 100%" : {
                         height: "0.8em",
-                        opacity: 0,
-                        transform: "translate3d(0,-.125em,0)"
+                        transform: "translate3d(0,-.0625em,0)"
                     },
                     "50%" : {
                         height: "1em",
                         transform: "translate3d(0,25%,0)",
-                        opacity: 1
+                        opacity: .25
                     },
                     "75%" : {
-                        opacity: 1
+                        transform: "translate3d(0,25%,0)",
+                        opacity: 0
+                    },
+                    "100%" : {
+                        opacity: 0
                     }
                 },
                 shineGlow: {

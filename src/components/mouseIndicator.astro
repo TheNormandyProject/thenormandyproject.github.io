@@ -1,0 +1,109 @@
+---
+import { FaChevronDown } from "react-icons/fa";
+
+interface Props {
+  color: string;
+  hoverColor: string;
+}
+
+interface IDictionary<T> {
+    [key : string ] : T
+}
+
+const { color, hoverColor } = Astro.props;
+const colorVariants : IDictionary<string[]> = {
+  black: ["border-black-100 group-hover:border-black-100 after:bg-black-100 group-hover:after:bg-black-100",
+    "fill-black-200 group-hover:fill-black-200"],
+  white:
+    ["border-white-100 group-hover:border-white-100 after:bg-white-100 group-hover:after:bg-white-100",
+    "fill-white-200 group-hover:fill-white-200"],
+  slate: ["border-slate-100 group-hover:border-slate-100 after:bg-slate-100 group-hover:after:bg-slate-100",
+    "fill-slate-200 group-hover:fill-slate-200"],
+  gray: ["border-gray-100 group-hover:border-gray-100 after:bg-gray-100 group-hover:after:bg-gray-100",
+    "fill-gray-200 group-hover:fill-gray-200"],
+  zinc: ["border-zinc-100 group-hover:border-zinc-100 after:bg-zinc-100 group-hover:after:bg-zinc-100",
+    "fill-zinc-200 group-hover:fill-zinc-200"],
+  neutral: ["border-neutral-100 group-hover:border-neutral-100 after:bg-neutral-100 group-hover:after:bg-neutral-100",
+    "fill-neutral-200 group-hover:fill-neutral-200"],
+  stone: ["border-stone-100 group-hover:border-stone-100 after:bg-stone-100 group-hover:after:bg-stone-100",
+    "fill-stone-200 group-hover:fill-stone-200"],
+  red: ["border-red-100 group-hover:border-red-100 after:bg-red-100 group-hover:after:bg-red-100",
+    "fill-red-200 group-hover:fill-red-200"],
+  orange: ["border-orange-100 group-hover:border-orange-100 after:bg-orange-100 group-hover:after:bg-orange-100",
+    "fill-orange-200 group-hover:fill-orange-200"],
+  amber: ["border-amber-100 group-hover:border-amber-100 after:bg-amber-100 group-hover:after:bg-amber-100",
+    "fill-amber-200 group-hover:fill-amber-200"],
+  yellow: ["border-yellow-100 group-hover:border-yellow-100 after:bg-yellow-100 group-hover:after:bg-yellow-100",
+    "fill-yellow-200 group-hover:fill-yellow-200"],
+  lime: ["border-lime-100 group-hover:border-lime-100 after:bg-lime-100 group-hover:after:bg-lime-100",
+    "fill-lime-200 group-hover:fill-lime-200"],
+  green: ["border-green-100 group-hover:border-green-100 after:bg-green-100 group-hover:after:bg-green-100",
+    "fill-green-200 group-hover:fill-green-200"],
+  emerald: ["border-emerald-100 group-hover:border-emerald-100 after:bg-emerald-100 group-hover:after:bg-emerald-100",
+    "fill-emerald-200 group-hover:fill-emerald-200"],
+  teal: ["border-teal-100 group-hover:border-teal-100 after:bg-teal-100 group-hover:after:bg-teal-100",
+    "fill-teal-200 group-hover:fill-teal-200"],
+  cyan: ["border-cyan-100 group-hover:border-cyan-100 after:bg-cyan-100 group-hover:after:bg-cyan-100",
+    "fill-cyan-200 group-hover:fill-cyan-200"],
+  sky: ["border-sky-100 group-hover:border-sky-100 after:bg-sky-100 group-hover:after:bg-sky-100",
+    "fill-sky-200 group-hover:fill-sky-200"],
+  blue: ["border-blue-100 group-hover:border-blue-100 after:bg-blue-100 group-hover:after:bg-blue-100",
+    "fill-blue-200 group-hover:fill-blue-200"],
+  indigo: ["border-indigo-100 group-hover:border-indigo-100 after:bg-indigo-100 group-hover:after:bg-indigo-100",
+    "fill-indigo-200 group-hover:fill-indigo-200"],
+  violet: ["border-violet-100 group-hover:border-violet-100 after:bg-violet-100 group-hover:after:bg-violet-100",
+    "fill-violet-200 group-hover:fill-violet-200"],
+  purple: ["border-purple-100 group-hover:border-purple-100 after:bg-purple-100 group-hover:after:bg-purple-100",
+    "fill-purple-200 group-hover:fill-purple-200"],
+  fuchsia: ["border-fuchsia-100 group-hover:border-fuchsia-100 after:bg-fuchsia-100 group-hover:after:bg-fuchsia-100",
+    "fill-fuchsia-200 group-hover:fill-fuchsia-200"],
+  pink: ["border-pink-100 group-hover:border-pink-100 after:bg-pink-100 group-hover:after:bg-pink-100",
+    "fill-pink-200 group-hover:fill-pink-200"],
+  rose: ["border-rose-100 group-hover:border-rose-100 after:bg-rose-100 group-hover:after:bg-rose-100",
+    "fill-rose-200 group-hover:fill-rose-200"],
+  cerberus: ["border-cerberus-100 group-hover:border-cerberus-100 after:bg-cerberus-100 group-hover:after:bg-cerberus-100",
+    "fill-cerberus-200 group-hover:fill-cerberus-200"],
+  alliance: ["border-alliance-100 group-hover:border-alliance-100 after:bg-alliance-100 group-hover:after:bg-alliance-100",
+    "fill-alliance-200 group-hover:fill-alliance-200"],
+  n7: ["border-n7-100 group-hover:border-n7-100 after:bg-n7-100 group-hover:after:bg-n7-100",
+    "fill-n7-200 group-hover:fill-n7-200"],
+  paragon: ["border-paragon-100 group-hover:border-paragon-100 after:bg-paragon-100 group-hover:after:bg-paragon-100",
+    "fill-paragon-200 group-hover:fill-paragon-200"],
+  renegade: ["border-renegade-100 group-hover:border-renegade-100 after:bg-renegade-100 group-hover:after:bg-renegade-100",
+    "fill-renegade-200 group-hover:fill-renegade-200"],
+};
+---
+
+<a id="MouseNavigationIndicator" role="button" class={"group"}>
+  <figure
+    class={`relative h-14 w-8 rounded-2xl border-2 ${colorVariants[color][0]} mx-auto mb-3 after:absolute after:h-4 after:w-[4px] after:left-1/2 after:top-1 after:-ml-[2px] after:rounded-2xl after:opacity-100 after:animate-scroll after:transition-opacity`}
+  >
+  </figure>
+  <figure class={"w-4 mx-auto mb-3"}>
+    <FaChevronDown
+      className={`${colorVariants[color][1]} animate-pulse`}
+    />
+  </figure>
+</a>
+
+<script>
+  function failureAnim() {}
+  try {
+    let hopeThisIsScoped = document.getElementById("post-landing");
+    if (typeof hopeThisIsScoped === null)
+      throw new Error(
+        "post-landing element returned null"
+      ); /* replace with animation indicating failure */
+    let scrollTo = (hopeThisIsScoped as HTMLDivElement).getBoundingClientRect()
+      .top;
+    // this can't be null, technically, since it's target is initialised above
+    (
+      document.getElementById("MouseNavigationIndicator") as HTMLAnchorElement
+    ).addEventListener("click", () => {
+      window.scrollTo(0, scrollTo);
+    });
+  } catch (e) {
+    console.error(e);
+    failureAnim();
+  }
+</script>
