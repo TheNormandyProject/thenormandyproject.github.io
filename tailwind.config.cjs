@@ -1,9 +1,16 @@
+/* Tailwind config */
+const TNPUI = require("./src/tailwind/TNPUI.cjs").default;
+
 /** @type {import("tailwindcss").Config} */
 module.exports = {
     content: ["./src/**/*.{astro,js,ts,jsx,tsx}",],
     theme: {
         extend: {
+            fontFamily : {
+                "mono" : ["JetBrains Mono", "monospace", "system mono", "mono"]
+            },
             animation: {
+                "scroll" : "scroll 3s linear infinite",
                 "shine": "shine 3s linear infinite",
                 "shineGlow": "shineGlow 3s linear infinite",
                 "StrokeNormandyLetters" : "StrokeNormandyLetters 8s linear 0s 1 normal forwards",
@@ -11,6 +18,21 @@ module.exports = {
                 "ButtonGroupFadeIn" : "ButtonGroupFadeIn 1s linear 3s 1 normal forwards"
             },
             keyframes: {
+                scroll : {
+                    "from, to" : {
+                        height: "0.8em",
+                        opacity: 0,
+                        transform: "translate3d(0,-.125em,0)"
+                    },
+                    "50%" : {
+                        height: "1em",
+                        transform: "translate3d(0,25%,0)",
+                        opacity: 1
+                    },
+                    "75%" : {
+                        opacity: 1
+                    }
+                },
                 shineGlow: {
                     "0%": {
                         "background-color": "hsl(216, 65%, 38%)"
@@ -118,5 +140,5 @@ module.exports = {
 
     ],
     variants: {},
-    plugins: [],
+    plugins: [TNPUI],
 }

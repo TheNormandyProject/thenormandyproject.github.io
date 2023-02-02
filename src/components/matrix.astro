@@ -1,0 +1,69 @@
+<script>
+    const element = document.querySelectorAll(".matrix")[0];
+    if (typeof element === "undefined") return;
+
+    const columnCount = Math.floor(element.getBoundingClientRect().height / 30);
+    const rowCount = Math.floor(element.getBoundingClientRect().width / 30);
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    for (let i = 0; i < columnCount; i++) {
+        const p = document.createElement("p");
+        setupColumn(p);
+        element.append(p);
+    }
+
+    function setupColumn(p: HTMLParagraphElement) {
+        const delay = random(100, 300);
+        const duration = random(100, 2000);
+        const hasChildren = p.children.length > 0;
+
+        for (let j = 0; j < rowCount; j++) {
+            let _span = hasChildren
+            ? p.children.item(j)
+            : document.createElement("span");
+            const span = _span as HTMLSpanElement;
+
+            span.innerText = getRandomChar();
+            //span.style.color = "#" + randomColor;
+            span.style.color = getRandomColor();
+            const animation = span.animate([{ opacity: "1" }, { opacity: "0.05" }], {
+            duration: duration,
+            delay: delay + j * 25,
+            fill: "forwards",
+            });
+
+            if (j === rowCount - 1) {
+            animation.onfinish = () => {
+                setupColumn(p);
+            };
+            }
+
+            if (!hasChildren) {
+            p.appendChild(span);
+            }
+        }
+    }
+
+    function random(from: number, to: number) {
+        return Math.trunc(Math.random() * (to - from + 1) + from);
+    }
+
+    function getRandomChar() {
+        const charRanges = [
+            [0x3041, 0x30ff],
+            [0x0021, 0x007a],
+            [0x00bc, 0x02af],
+        ];
+
+        const i = random(0, charRanges.length - 1);
+        return String.fromCharCode(random(charRanges[i][0], charRanges[i][1]));
+    }
+
+    function getRandomColor() {
+        var letters = "0123456789ABCDEF";
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>

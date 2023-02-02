@@ -17,8 +17,11 @@ const StoreNav = () => {
     const [cartItems, mutateCartItems] = useState(testCart)
 
     return <header className={"absolute top-0 left-0 bg-slate-900 text-white h-16 w-full"}>
-        <nav className={"flex items-center h-full py-4 pl-8"}>
+        <nav className={"flex gap-4 items-center h-full py-4 pl-8"}>
             <a href="/"><NormandyLetterN className={"fill-white hover:fill-n7-600 h-4"} /></a>
+            <span>|</span>
+            <a className={"hover:text-n7-400"} href="/">Home</a>
+            <a className={"hover:text-n7-400"} href="/support">Support</a>
             <div className={"hidden sm:flex items-center gap-4 h-full ml-auto"}>
                 <a href="/store" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>Featured</a>
                 <a href="/store/limited" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>LIMITED</a>
@@ -26,44 +29,46 @@ const StoreNav = () => {
                 <a href="/store/accessories" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>Accessories</a>
                 <a href="/store/digital" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>Digital</a>
             </div>
-            {
-                cartMenuOpen
-                    ?
-                    /* Is open */
-                    <a className={"flex items-center justify-center bg-n7-800 h-16 w-16 ml-auto sm:ml-4 cursor-pointer"} onClick={() => {
-                        setCartMenuOpen(!cartMenuOpen);
-                        setNavMenuOpen(false);
-                    }}>
-                        <FaTimes className={"fill-white"} />
-                    </a>
-                    :
-                    /* Is closed */
-                    <a className={"flex items-center justify-center bg-slate-800 h-16 w-16 ml-auto sm:ml-4 cursor-pointer"} onClick={() => {
-                        setCartMenuOpen(!cartMenuOpen);
-                        setNavMenuOpen(false);
-                    }}>
-                        <GiShoppingBag className={"-mt-1 fill-white"} />
-                    </a>
-            }
-            {
-                navMenuOpen
-                    ?
-                    /* Is open */
-                    <a className={"flex sm:hidden items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"}onClick={() => {
-                        setNavMenuOpen(!navMenuOpen);
-                        setCartMenuOpen(false);
-                    }}>
-                        <FaTimes className={"fill-white"} />
-                    </a>
-                    :
-                    /* Is closed */
-                    <a className={"flex items-center justify-center bg-slate-800 sm:hidden h-16 w-16 cursor-pointer"}onClick={() => {
-                        setNavMenuOpen(!navMenuOpen);
-                        setCartMenuOpen(false);
-                    }}>
-                        <GiHamburgerMenu className={"fill-white"} />
-                    </a>
-            }
+            <div className={"ml-auto sm:ml-4 flex"}>
+                {
+                    cartMenuOpen
+                        ?
+                        /* Is open */
+                        <a className={"flex items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"} onClick={() => {
+                            setCartMenuOpen(!cartMenuOpen);
+                            setNavMenuOpen(false);
+                        }}>
+                            <FaTimes className={"fill-white"} />
+                        </a>
+                        :
+                        /* Is closed */
+                        <a className={"flex items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} onClick={() => {
+                            setCartMenuOpen(!cartMenuOpen);
+                            setNavMenuOpen(false);
+                        }}>
+                            <GiShoppingBag className={"-mt-1 fill-white"} />
+                        </a>
+                }
+                {
+                    navMenuOpen
+                        ?
+                        /* Is open */
+                        <a className={"flex sm:hidden items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"}onClick={() => {
+                            setNavMenuOpen(!navMenuOpen);
+                            setCartMenuOpen(false);
+                        }}>
+                            <FaTimes className={"fill-white"} />
+                        </a>
+                        :
+                        /* Is closed */
+                        <a className={"flex items-center justify-center bg-slate-800 sm:hidden h-16 w-16 cursor-pointer"}onClick={() => {
+                            setNavMenuOpen(!navMenuOpen);
+                            setCartMenuOpen(false);
+                        }}>
+                            <GiHamburgerMenu className={"fill-white"} />
+                        </a>
+                }
+            </div>
         </nav>
         {
             cartMenuOpen === true && <nav id="cart" className={"relative bg-slate-900 border border-n7-800 w-full sm:w-1/2 ml-auto sm:rounded-bl shadow-xl"}>

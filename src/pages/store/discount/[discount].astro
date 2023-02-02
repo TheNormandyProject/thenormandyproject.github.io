@@ -1,0 +1,27 @@
+---
+import Container from "@layouts/base.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { discount: "supportscroll" } },
+    { params: { discount: "testcount" } },
+    { params: { discount: "bigchunky" } },
+  ];
+}
+
+const { discount } = Astro.params;
+
+const getCode = () => {
+
+    if ( discount === "supportscroll" ) {
+        return "SUPPORTSCROLLS"
+    }
+
+};
+---
+
+<Container>
+    <main class={"p-4"}>
+        <h1 class={"text-6xl text-center"}>You discount code is {getCode()}</h1>
+    </main>
+</Container>

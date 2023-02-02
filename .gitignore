@@ -23,6 +23,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.prettierrc
+.prettierignore
 
 # Private
 private.*

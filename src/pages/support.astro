@@ -1,0 +1,92 @@
+---
+import Stars from "@components/stars.astro";
+import Matrix from "@components/matrix.astro";
+import Container from "@layouts/base.astro";
+import { FaChevronDown, FaMugHot, FaPatreon, FaPaypal } from "react-icons/fa/index.js";
+import { NormandyLetterN } from "src/assets/SVGs";
+---
+
+<Container title={"Support"}>
+    <main>
+        <section id="landing" class={"font-mono relative flex flex-col bg-gradient-to-b from-slate-900 to-cyan-900 text-cyan-100 h-screen w-full"}>
+            <Stars />
+            <nav class={"flex gap-4 items-center h-16 w-full py-4 px-8 z-10"}>
+                <a href="/"><NormandyLetterN className={"fill-current hover:fill-n7-400 h-4"} /></a>
+                <span>|</span>
+                <a class={"hover:text-n7-400"} href="/">Home</a>
+                <a class={"hover:text-n7-400"} href="/store">Store</a>
+            </nav>
+            <article class={"flex flex-col h-full"}>
+                <h1 class={"text-3xl sm:text-6xl md:text-7xl text-center w-10/12 min-w-[16rem] mx-auto mt-auto mb-0"}>help us keep the lights on</h1>
+                <sub class={"text-xs sm:text-sm text-center mt-auto mb-6"}>Pick your poison...</sub>
+                <a class={"group"} href="javascript:window.scrollTo(0, document.getElementById('post-landing').getBoundingClientRect().top)">
+                    <figure class={"relative h-14 w-8 rounded-2xl border-2 border-cyan-100 mx-auto mb-3 after:absolute after:h-4 after:w-[4px] after:bg-cyan-100 after:left-1/2 after:top-1 after:-ml-[2px] after:rounded-2xl after:animate-scroll group-hover:border-fuchsia-100 group-hover:after:bg-fuchsia-100"} />
+                    <FaChevronDown className={"fill-cyan-200 mx-auto mb-3 animate-pulse group-hover:fill-fuchsia-200"} />
+                </a>
+            </article>
+        </section>
+        <section id="post-landing" class={"bg-gradient-to-b from-cyan-700 via-cyan-600 to-cyan-900 text-slate-900 p-12 z-10"}>
+            <div class={"relative font-mono flex items-center bg-gradient-to-b from-cyan-900 to-cyan-600 border-y-2 border-dashed border-y-cyan-300 h-36 sm:h-44 md:h-64 select-none -mx-12 -mt-12 mb-12 z-0"}>
+                <h1 class={"text-5xl sm:text-7xl md:text-8xl text-cyan-100 uppercase m-auto z-10"}>Thank You!</h1>
+                <div class={"absolute bg-striped-cyan h-full w-full"}></div>
+            </div>
+            <div class={"font-mono flex flex-col md:flex-row gap-6 md:gap-2 justify-center w-full max-w-4xl mx-auto mb-12"}>
+                <article class={"flex flex-col bg-striped-cyan bg-cyan-700 border rounded-sm border-cyan-400 md:h-full w-full md:w-1/3 md:max-w-[16rem] shadow-md px-4 py-6 mx-auto first:ml-0 last:mr-0"}>
+                    <h1 class={"text-center text-white mb-3"}>Patreon</h1>
+                    <FaPatreon size="6em" className={"h-24 w-24 fill-cyan-100 drop-shadow-xl mx-auto p-4"} />
+                    <p class={"py-4 text-cyan-100"}>
+                        On ... you can support us in continuing our work. You can subscribe to a monthly tier and get rewards for your support. Check it out!
+                    </p>
+                    <a class={"button-cyan button-cyan-900 mx-auto mt-auto"} href="">Let's Go!</a>
+                </article>
+                <article class={"flex flex-col bg-striped-cyan bg-cyan-700 border rounded-sm border-cyan-400 md:h-full w-full md:w-1/3 md:max-w-[16rem] shadow-md px-4 py-6 mx-auto first:ml-0 last:mr-0"}>
+                    <h1 class={"text-center text-white mb-3"}>Ko-Fi</h1>
+                    <FaMugHot size="6em" className={"h-24 w-24 fill-cyan-100 drop-shadow-xl mx-auto p-4"} />
+                    <p class={"py-4 text-cyan-100"}>
+                        On Ko-Fi you can support us in continuing our work. You can donate one-time and see your message appear on stream. Or you can subscribe to a monthly tier and get rewards!
+                    </p>
+                    <a class={"button-cyan button-cyan-900 mx-auto mt-auto"} href="">Let's Go!</a>
+                </article>
+                <article class={"flex flex-col bg-striped-cyan bg-cyan-700 border rounded-sm border-cyan-400 md:h-full w-full md:w-1/3 md:max-w-[16rem] shadow-md px-4 py-6 mx-auto first:ml-0 last:mr-0"}>
+                    <h1 class={"text-center text-white mb-3"}>PayPal</h1>
+                    <FaPaypal size="6em" className={"h-24 w-24 fill-cyan-100 drop-shadow-xl mx-auto p-4"} />
+                    <p class={"py-4 text-cyan-100"}>
+                        On PayPal you can support us in continuing our work. This is the most basic form of support. Donate however much you want, one time.
+                    </p>
+                    <a class={"button-cyan button-cyan-900 mx-auto mt-auto"} href="">Let's Go!</a>
+                </article>
+            </div>
+            <article class={"bg-striped-cyan bg-cyan-700 text-cyan-100 border rounded-sm border-cyan-400 shadow-lg max-w-4xl mx-auto p-4"}>
+                <h1 class={"font-bold text-3xl mb-3"}>Other ways to help us!</h1>
+                <ul class={"flex gap-4 items-center w-full"}>
+                    <li>
+                        <a class={"block button-cyan w-32 mb-3"} href="/store">The Store</a>
+                    </li>
+                    <li>
+                        <a class={"block button-cyan w-32 mb-3"} href="https://www.youtube.com/@TheNormandyProject">Watch our videos!</a>
+                    </li>
+                    <li>
+                        <a class={"block button-cyan w-32 mb-3"} href="/store">The Store</a>
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section id="discount" class={"relative bg-gradient-to-b from-n7-700 via-red-400 to-n7-900 text-slate-900 p-12 z-10"}>
+            <div class={"absolute matrix -z-10"}>
+                
+            </div>
+            <!--<Matrix client:visible /> change to react -->
+            <div class={"relative font-mono flex items-center bg-gradient-to-b from-n7-900 to-n7-600 border-y-2 border-dashed border-y-n7-300 h-36 sm:h-44 md:h-64 select-none -mx-12 -mt-12 mb-12 z-0"}>
+                <h1 class={"text-5xl sm:text-7xl md:text-8xl text-n7-100 uppercase m-auto z-10"}>User Alert</h1>
+                <div class={"absolute bg-striped-red h-full w-full"}></div>
+            </div>
+            <article class={"bg-striped-red bg-n7-700 text-n7-100 border rounded-sm border-n7-400 shadow-lg max-w-4xl mx-auto p-4"}>
+                <h1 class={"font-bold text-3xl mb-3"}>Greetings, Commander!</h1>
+                <h3 class={"text-2xl"}>You are entitled to exclusive discounts in our Citadel Store!</h3>
+                <p class={"mb-6"}>Hit the button below to gain access to your discount!</p>
+                <a class={"block button-white hollow hover:text-n7-900"} href="/discount/supportscroll">This is my favourite store on the Citadel</a>
+            </article>
+        </section>
+    </main>
+    <footer class={"bg-red-900 text-red-100 text-center py-6"}>&copy; The Normandy Project {`${(new Date()).getUTCFullYear()}`}</footer>
+</Container>
