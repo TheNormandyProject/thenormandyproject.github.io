@@ -19,7 +19,7 @@ import {
 ---
 <Container>
     <main>
-        <article class={"bg-slate-900 text-white h-screen w-full"}>
+        <article id="landing-letter-reveal" class={"bg-slate-900 bg-striped-slate text-white h-screen w-full"}>
             <section class={"flex flex-col justify-center container max-w-screen-md h-full mx-auto"}>
                 <div class={"flex justify-center w-full px-4 md:px-0 py-4 sm:py-6 md:py-8"}>
                     <NormandyLetterN id="NormandyLetterN" className={"NormandyLetter fill-transparent stroke-white h-16"}/>
@@ -49,3 +49,23 @@ import {
         </article>
     </main>
 </Container>
+<style>
+    @keyframes wriggleLines {
+        from {
+            background-size: 600em 600em;
+            background-position: center center;
+        }
+        50% {
+            background-size: 700em 700em;
+            background-position: 0 0;
+        }
+        to {
+            background-size: 600em 600em;
+            background-position: center center;
+        }
+    }
+    #landing-letter-reveal {
+        animation: wriggleLines 10s infinite 60s normal forwards;
+        background-blend-mode: hard-light; 
+    }
+</style>

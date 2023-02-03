@@ -1,5 +1,5 @@
 ---
-import { ParagonLogo } from 'src/assets/SVGs';
+import { ParagonLogo, RenegadeLogo, Credits } from 'src/assets/SVGs';
 import { BitShiftString } from '@react/Components';
 
 interface Props {
@@ -15,14 +15,14 @@ const UUID = `discountVoucher-${BitShiftString(16)}`;
 
 <article
     id={`${UUID}`}
-    class={`font-mono flex flex-col md:flex-row items-center gap-4 bg-cerberus-200 bg-striped-cerberus text-cerberus-900 text-center md:text-left border-cerberus-300 border-4 p-4 reveal-animation ${className ?? ""}`}
+    class={`font-mono flex flex-col md:flex-row items-stretch gap-4 bg-cerberus-200 bg-striped-cerberus text-cerberus-900 text-center md:text-left border-cerberus-300 border-4 p-4 overflow-hidden reveal-animation ${className ?? ""}`}
     style={`box-shadow: rgb(255 235 165 / var(--tw-bg-opacity)) 0px 0px 12px 0px`}>
-    <figure class={"flex flex-col md:flex-row items-center self-stretch bg-cerberus-200 border-cerberus-300 border-2 p-4"}>
-        <ParagonLogo className={"h-16 w-16 md:h-32 md:w-32 fill-cerberus-900 drop-shadow-lg"} />
+    <figure class={"group flex flex-col md:flex-row items-center bg-cerberus-200 border-cerberus-300 border-2 p-4"}>
+        <Credits className={"group-hover:scale-110 h-16 w-16 md:h-32 md:w-32 fill-cerberus-900 drop-shadow-lg transition-transform"} />
     </figure>
     <section class={"flex-auto bg-cerberus-200 border-cerberus-300 border-2 p-4"}>
         <header class={"text-4xl font-bold select-none mb-4 md:mb-3 pl-2"}>DISCOUNT</header>
-        <p id="discount-code" class={"bg-cerberus-100 border-cerberus-300 border-2 text-lg font-bold mb-4 md:mb-3 p-4 selection:bg-cerberus-900 selection:text-cerberus-100"}>
+        <p id="discount-code" class={"bg-cerberus-100 border-cerberus-300 border-2 text-lg font-bold mb-4 md:mb-3 p-4 hover:scale-110 selection:bg-cerberus-900 selection:text-cerberus-100 transition-transform"}>
             {code}
         </p>
         <footer class={"text-4xl font-bold select-none md:text-right pr-2"}>{amount}%</footer>

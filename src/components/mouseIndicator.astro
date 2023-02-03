@@ -1,88 +1,269 @@
 ---
 import { FaChevronDown } from "react-icons/fa/index.js";
 
-interface Props {
-  color: string;
-  hoverColor: string;
+interface VariantObject {
+  light: string,
+  dark: string
 }
 
+
 interface IDictionary<T> {
-    [key : string ] : T
+  [key: string]: T;
+}
+
+interface Props {
+  color: VariantObject;
+  hoverColor: VariantObject;
 }
 
 const { color, hoverColor } = Astro.props;
-const colorVariants : IDictionary<string[]> = {
-  black: ["border-black-100 group-hover:border-black-100 after:bg-black-100 group-hover:after:bg-black-100",
-    "fill-black-200 group-hover:fill-black-200"],
-  white:
-    ["border-white-100 group-hover:border-white-100 after:bg-white-100 group-hover:after:bg-white-100",
-    "fill-white-200 group-hover:fill-white-200"],
-  slate: ["border-slate-100 group-hover:border-slate-100 after:bg-slate-100 group-hover:after:bg-slate-100",
-    "fill-slate-200 group-hover:fill-slate-200"],
-  gray: ["border-gray-100 group-hover:border-gray-100 after:bg-gray-100 group-hover:after:bg-gray-100",
-    "fill-gray-200 group-hover:fill-gray-200"],
-  zinc: ["border-zinc-100 group-hover:border-zinc-100 after:bg-zinc-100 group-hover:after:bg-zinc-100",
-    "fill-zinc-200 group-hover:fill-zinc-200"],
-  neutral: ["border-neutral-100 group-hover:border-neutral-100 after:bg-neutral-100 group-hover:after:bg-neutral-100",
-    "fill-neutral-200 group-hover:fill-neutral-200"],
-  stone: ["border-stone-100 group-hover:border-stone-100 after:bg-stone-100 group-hover:after:bg-stone-100",
-    "fill-stone-200 group-hover:fill-stone-200"],
-  red: ["border-red-100 group-hover:border-red-100 after:bg-red-100 group-hover:after:bg-red-100",
-    "fill-red-200 group-hover:fill-red-200"],
-  orange: ["border-orange-100 group-hover:border-orange-100 after:bg-orange-100 group-hover:after:bg-orange-100",
-    "fill-orange-200 group-hover:fill-orange-200"],
-  amber: ["border-amber-100 group-hover:border-amber-100 after:bg-amber-100 group-hover:after:bg-amber-100",
-    "fill-amber-200 group-hover:fill-amber-200"],
-  yellow: ["border-yellow-100 group-hover:border-yellow-100 after:bg-yellow-100 group-hover:after:bg-yellow-100",
-    "fill-yellow-200 group-hover:fill-yellow-200"],
-  lime: ["border-lime-100 group-hover:border-lime-100 after:bg-lime-100 group-hover:after:bg-lime-100",
-    "fill-lime-200 group-hover:fill-lime-200"],
-  green: ["border-green-100 group-hover:border-green-100 after:bg-green-100 group-hover:after:bg-green-100",
-    "fill-green-200 group-hover:fill-green-200"],
-  emerald: ["border-emerald-100 group-hover:border-emerald-100 after:bg-emerald-100 group-hover:after:bg-emerald-100",
-    "fill-emerald-200 group-hover:fill-emerald-200"],
-  teal: ["border-teal-100 group-hover:border-teal-100 after:bg-teal-100 group-hover:after:bg-teal-100",
-    "fill-teal-200 group-hover:fill-teal-200"],
-  cyan: ["border-cyan-100 group-hover:border-cyan-100 after:bg-cyan-100 group-hover:after:bg-cyan-100",
-    "fill-cyan-200 group-hover:fill-cyan-200"],
-  sky: ["border-sky-100 group-hover:border-sky-100 after:bg-sky-100 group-hover:after:bg-sky-100",
-    "fill-sky-200 group-hover:fill-sky-200"],
-  blue: ["border-blue-100 group-hover:border-blue-100 after:bg-blue-100 group-hover:after:bg-blue-100",
-    "fill-blue-200 group-hover:fill-blue-200"],
-  indigo: ["border-indigo-100 group-hover:border-indigo-100 after:bg-indigo-100 group-hover:after:bg-indigo-100",
-    "fill-indigo-200 group-hover:fill-indigo-200"],
-  violet: ["border-violet-100 group-hover:border-violet-100 after:bg-violet-100 group-hover:after:bg-violet-100",
-    "fill-violet-200 group-hover:fill-violet-200"],
-  purple: ["border-purple-100 group-hover:border-purple-100 after:bg-purple-100 group-hover:after:bg-purple-100",
-    "fill-purple-200 group-hover:fill-purple-200"],
-  fuchsia: ["border-fuchsia-100 group-hover:border-fuchsia-100 after:bg-fuchsia-100 group-hover:after:bg-fuchsia-100",
-    "fill-fuchsia-200 group-hover:fill-fuchsia-200"],
-  pink: ["border-pink-100 group-hover:border-pink-100 after:bg-pink-100 group-hover:after:bg-pink-100",
-    "fill-pink-200 group-hover:fill-pink-200"],
-  rose: ["border-rose-100 group-hover:border-rose-100 after:bg-rose-100 group-hover:after:bg-rose-100",
-    "fill-rose-200 group-hover:fill-rose-200"],
-  cerberus: ["border-cerberus-100 group-hover:border-cerberus-100 after:bg-cerberus-100 group-hover:after:bg-cerberus-100",
-    "fill-cerberus-200 group-hover:fill-cerberus-200"],
-  alliance: ["border-alliance-100 group-hover:border-alliance-100 after:bg-alliance-100 group-hover:after:bg-alliance-100",
-    "fill-alliance-200 group-hover:fill-alliance-200"],
-  n7: ["border-n7-100 group-hover:border-n7-100 after:bg-n7-100 group-hover:after:bg-n7-100",
-    "fill-n7-200 group-hover:fill-n7-200"],
-  paragon: ["border-paragon-100 group-hover:border-paragon-100 after:bg-paragon-100 group-hover:after:bg-paragon-100",
-    "fill-paragon-200 group-hover:fill-paragon-200"],
-  renegade: ["border-renegade-100 group-hover:border-renegade-100 after:bg-renegade-100 group-hover:after:bg-renegade-100",
-    "fill-renegade-200 group-hover:fill-renegade-200"],
+
+const colorVariants: IDictionary<string[]> = {
+  black: [
+    "border-black-100 group-hover:border-black-100 after:bg-black-100 group-hover:after:bg-black-100",
+    "fill-black-200 group-hover:fill-black-200",
+  ],
+  white: [
+    "border-white-100 group-hover:border-white-100 after:bg-white-100 group-hover:after:bg-white-100",
+    "fill-white-200 group-hover:fill-white-200",
+  ],
+  slate: [
+    "border-slate-100 group-hover:border-slate-100 after:bg-slate-100 group-hover:after:bg-slate-100",
+    "fill-slate-200 group-hover:fill-slate-200",
+  ],
+  gray: [
+    "border-gray-100 group-hover:border-gray-100 after:bg-gray-100 group-hover:after:bg-gray-100",
+    "fill-gray-200 group-hover:fill-gray-200",
+  ],
+  zinc: [
+    "border-zinc-100 group-hover:border-zinc-100 after:bg-zinc-100 group-hover:after:bg-zinc-100",
+    "fill-zinc-200 group-hover:fill-zinc-200",
+  ],
+  neutral: [
+    "border-neutral-100 group-hover:border-neutral-100 after:bg-neutral-100 group-hover:after:bg-neutral-100",
+    "fill-neutral-200 group-hover:fill-neutral-200",
+  ],
+  stone: [
+    "border-stone-100 group-hover:border-stone-100 after:bg-stone-100 group-hover:after:bg-stone-100",
+    "fill-stone-200 group-hover:fill-stone-200",
+  ],
+  red: [
+    "border-red-100 group-hover:border-red-100 after:bg-red-100 group-hover:after:bg-red-100",
+    "fill-red-200 group-hover:fill-red-200",
+  ],
+  orange: [
+    "border-orange-100 group-hover:border-orange-100 after:bg-orange-100 group-hover:after:bg-orange-100",
+    "fill-orange-200 group-hover:fill-orange-200",
+  ],
+  amber: [
+    "border-amber-100 group-hover:border-amber-100 after:bg-amber-100 group-hover:after:bg-amber-100",
+    "fill-amber-200 group-hover:fill-amber-200",
+  ],
+  yellow: [
+    "border-yellow-100 group-hover:border-yellow-100 after:bg-yellow-100 group-hover:after:bg-yellow-100",
+    "fill-yellow-200 group-hover:fill-yellow-200",
+  ],
+  lime: [
+    "border-lime-100 group-hover:border-lime-100 after:bg-lime-100 group-hover:after:bg-lime-100",
+    "fill-lime-200 group-hover:fill-lime-200",
+  ],
+  green: [
+    "border-green-100 group-hover:border-green-100 after:bg-green-100 group-hover:after:bg-green-100",
+    "fill-green-200 group-hover:fill-green-200",
+  ],
+  emerald: [
+    "border-emerald-100 group-hover:border-emerald-100 after:bg-emerald-100 group-hover:after:bg-emerald-100",
+    "fill-emerald-200 group-hover:fill-emerald-200",
+  ],
+  teal: [
+    "border-teal-100 group-hover:border-teal-100 after:bg-teal-100 group-hover:after:bg-teal-100",
+    "fill-teal-200 group-hover:fill-teal-200",
+  ],
+  cyan: [
+    "border-cyan-100 group-hover:border-cyan-100 after:bg-cyan-100 group-hover:after:bg-cyan-100",
+    "fill-cyan-200 group-hover:fill-cyan-200",
+  ],
+  sky: [
+    "border-sky-100 group-hover:border-sky-100 after:bg-sky-100 group-hover:after:bg-sky-100",
+    "fill-sky-200 group-hover:fill-sky-200",
+  ],
+  blue: [
+    "border-blue-100 group-hover:border-blue-100 after:bg-blue-100 group-hover:after:bg-blue-100",
+    "fill-blue-200 group-hover:fill-blue-200",
+  ],
+  indigo: [
+    "border-indigo-100 group-hover:border-indigo-100 after:bg-indigo-100 group-hover:after:bg-indigo-100",
+    "fill-indigo-200 group-hover:fill-indigo-200",
+  ],
+  violet: [
+    "border-violet-100 group-hover:border-violet-100 after:bg-violet-100 group-hover:after:bg-violet-100",
+    "fill-violet-200 group-hover:fill-violet-200",
+  ],
+  purple: [
+    "border-purple-100 group-hover:border-purple-100 after:bg-purple-100 group-hover:after:bg-purple-100",
+    "fill-purple-200 group-hover:fill-purple-200",
+  ],
+  fuchsia: [
+    "border-fuchsia-100 group-hover:border-fuchsia-100 after:bg-fuchsia-100 group-hover:after:bg-fuchsia-100",
+    "fill-fuchsia-200 group-hover:fill-fuchsia-200",
+  ],
+  pink: [
+    "border-pink-100 group-hover:border-pink-100 after:bg-pink-100 group-hover:after:bg-pink-100",
+    "fill-pink-200 group-hover:fill-pink-200",
+  ],
+  rose: [
+    "border-rose-100 group-hover:border-rose-100 after:bg-rose-100 group-hover:after:bg-rose-100",
+    "fill-rose-200 group-hover:fill-rose-200",
+  ],
+  cerberus: [
+    "border-cerberus-100 group-hover:border-cerberus-100 after:bg-cerberus-100 group-hover:after:bg-cerberus-100",
+    "fill-cerberus-200 group-hover:fill-cerberus-200",
+  ],
+  alliance: [
+    "border-alliance-100 group-hover:border-alliance-100 after:bg-alliance-100 group-hover:after:bg-alliance-100",
+    "fill-alliance-200 group-hover:fill-alliance-200",
+  ],
+  n7: [
+    "border-n7-100 group-hover:border-n7-100 after:bg-n7-100 group-hover:after:bg-n7-100",
+    "fill-n7-200 group-hover:fill-n7-200",
+  ],
+  paragon: [
+    "border-paragon-100 group-hover:border-paragon-100 after:bg-paragon-100 group-hover:after:bg-paragon-100",
+    "fill-paragon-200 group-hover:fill-paragon-200",
+  ],
+  renegade: [
+    "border-renegade-100 group-hover:border-renegade-100 after:bg-renegade-100 group-hover:after:bg-renegade-100",
+    "fill-renegade-200 group-hover:fill-renegade-200",
+  ]
+};
+
+const darkColorVariants: IDictionary<string[]> = {
+  black: [
+    "dark:border-black-100 dark:group-hover:border-black-100 dark:after:bg-black-100 dark:group-hover:after:bg-black-100",
+    "dark:fill-black-200 dark:group-hover:fill-black-200",
+  ],
+  white: [
+    "dark:border-white-100 dark:group-hover:border-white-100 dark:after:bg-white-100 dark:group-hover:after:bg-white-100",
+    "dark:fill-white-200 dark:group-hover:fill-white-200",
+  ],
+  slate: [
+    "dark:border-slate-100 dark:group-hover:border-slate-100 dark:after:bg-slate-100 dark:group-hover:after:bg-slate-100",
+    "dark:fill-slate-200 dark:group-hover:fill-slate-200",
+  ],
+  gray: [
+    "dark:border-gray-100 dark:group-hover:border-gray-100 dark:after:bg-gray-100 dark:group-hover:after:bg-gray-100",
+    "dark:fill-gray-200 dark:group-hover:fill-gray-200",
+  ],
+  zinc: [
+    "dark:border-zinc-100 dark:group-hover:border-zinc-100 dark:after:bg-zinc-100 dark:group-hover:after:bg-zinc-100",
+    "dark:fill-zinc-200 dark:group-hover:fill-zinc-200",
+  ],
+  neutral: [
+    "dark:border-neutral-100 dark:group-hover:border-neutral-100 dark:after:bg-neutral-100 dark:group-hover:after:bg-neutral-100",
+    "dark:fill-neutral-200 dark:group-hover:fill-neutral-200",
+  ],
+  stone: [
+    "dark:border-stone-100 dark:group-hover:border-stone-100 dark:after:bg-stone-100 dark:group-hover:after:bg-stone-100",
+    "dark:fill-stone-200 dark:group-hover:fill-stone-200",
+  ],
+  red: [
+    "dark:border-red-100 dark:group-hover:border-red-100 dark:after:bg-red-100 dark:group-hover:after:bg-red-100",
+    "dark:fill-red-200 dark:group-hover:fill-red-200",
+  ],
+  orange: [
+    "dark:border-orange-100 dark:group-hover:border-orange-100 dark:after:bg-orange-100 dark:group-hover:after:bg-orange-100",
+    "dark:fill-orange-200 dark:group-hover:fill-orange-200",
+  ],
+  amber: [
+    "dark:border-amber-100 dark:group-hover:border-amber-100 dark:after:bg-amber-100 dark:group-hover:after:bg-amber-100",
+    "dark:fill-amber-200 dark:group-hover:fill-amber-200",
+  ],
+  yellow: [
+    "dark:border-yellow-100 dark:group-hover:border-yellow-100 dark:after:bg-yellow-100 dark:group-hover:after:bg-yellow-100",
+    "dark:fill-yellow-200 dark:group-hover:fill-yellow-200",
+  ],
+  lime: [
+    "dark:border-lime-100 dark:group-hover:border-lime-100 dark:after:bg-lime-100 dark:group-hover:after:bg-lime-100",
+    "dark:fill-lime-200 dark:group-hover:fill-lime-200",
+  ],
+  green: [
+    "dark:border-green-100 dark:group-hover:border-green-100 dark:after:bg-green-100 dark:group-hover:after:bg-green-100",
+    "dark:fill-green-200 dark:group-hover:fill-green-200",
+  ],
+  emerald: [
+    "dark:border-emerald-100 dark:group-hover:border-emerald-100 dark:after:bg-emerald-100 dark:group-hover:after:bg-emerald-100",
+    "dark:fill-emerald-200 dark:group-hover:fill-emerald-200",
+  ],
+  teal: [
+    "dark:border-teal-100 dark:group-hover:border-teal-100 dark:after:bg-teal-100 dark:group-hover:after:bg-teal-100",
+    "dark:fill-teal-200 dark:group-hover:fill-teal-200",
+  ],
+  cyan: [
+    "dark:border-cyan-100 dark:group-hover:border-cyan-100 dark:after:bg-cyan-100 dark:group-hover:after:bg-cyan-100",
+    "dark:fill-cyan-200 dark:group-hover:fill-cyan-200",
+  ],
+  sky: [
+    "dark:border-sky-100 dark:group-hover:border-sky-100 dark:after:bg-sky-100 dark:group-hover:after:bg-sky-100",
+    "dark:fill-sky-200 dark:group-hover:fill-sky-200",
+  ],
+  blue: [
+    "dark:border-blue-100 dark:group-hover:border-blue-100 dark:after:bg-blue-100 dark:group-hover:after:bg-blue-100",
+    "dark:fill-blue-200 dark:group-hover:fill-blue-200",
+  ],
+  indigo: [
+    "dark:border-indigo-100 dark:group-hover:border-indigo-100 dark:after:bg-indigo-100 dark:group-hover:after:bg-indigo-100",
+    "dark:fill-indigo-200 dark:group-hover:fill-indigo-200",
+  ],
+  violet: [
+    "dark:border-violet-100 dark:group-hover:border-violet-100 dark:after:bg-violet-100 dark:group-hover:after:bg-violet-100",
+    "dark:fill-violet-200 dark:group-hover:fill-violet-200",
+  ],
+  purple: [
+    "dark:border-purple-100 dark:group-hover:border-purple-100 dark:after:bg-purple-100 dark:group-hover:after:bg-purple-100",
+    "dark:fill-purple-200 dark:group-hover:fill-purple-200",
+  ],
+  fuchsia: [
+    "dark:border-fuchsia-100 dark:group-hover:border-fuchsia-100 dark:after:bg-fuchsia-100 dark:group-hover:after:bg-fuchsia-100",
+    "dark:fill-fuchsia-200 dark:group-hover:fill-fuchsia-200",
+  ],
+  pink: [
+    "dark:border-pink-100 dark:group-hover:border-pink-100 dark:after:bg-pink-100 dark:group-hover:after:bg-pink-100",
+    "dark:fill-pink-200 dark:group-hover:fill-pink-200",
+  ],
+  rose: [
+    "dark:border-rose-100 dark:group-hover:border-rose-100 dark:after:bg-rose-100 dark:group-hover:after:bg-rose-100",
+    "dark:fill-rose-200 dark:group-hover:fill-rose-200",
+  ],
+  cerberus: [
+    "dark:border-cerberus-100 dark:group-hover:border-cerberus-100 dark:after:bg-cerberus-100 dark:group-hover:after:bg-cerberus-100",
+    "dark:fill-cerberus-200 dark:group-hover:fill-cerberus-200",
+  ],
+  alliance: [
+    "dark:border-alliance-100 dark:group-hover:border-alliance-100 dark:after:bg-alliance-100 dark:group-hover:after:bg-alliance-100",
+    "dark:fill-alliance-200 dark:group-hover:fill-alliance-200",
+  ],
+  n7: [
+    "dark:border-n7-100 dark:group-hover:border-n7-100 dark:after:bg-n7-100 dark:group-hover:after:bg-n7-100",
+    "dark:fill-n7-200 dark:group-hover:fill-n7-200",
+  ],
+  paragon: [
+    "dark:border-paragon-100 dark:group-hover:border-paragon-100 dark:after:bg-paragon-100 dark:group-hover:after:bg-paragon-100",
+    "dark:fill-paragon-200 dark:group-hover:fill-paragon-200",
+  ],
+  renegade: [
+    "dark:border-renegade-100 dark:group-hover:border-renegade-100 dark:after:bg-renegade-100 dark:group-hover:after:bg-renegade-100",
+    "dark:fill-renegade-200 dark:group-hover:fill-renegade-200",
+  ]
 };
 ---
 
 <a id="MouseNavigationIndicator" role="button" class={"group"}>
   <figure
-    class={`relative h-14 w-8 rounded-2xl border-2 ${colorVariants[color][0]} mx-auto mb-3 after:absolute after:h-4 after:w-[4px] after:left-1/2 after:top-1 after:-ml-[2px] after:rounded-2xl after:opacity-100 after:animate-scroll after:transition-opacity`}
+    class={`relative h-14 w-8 rounded-2xl border-2 ${colorVariants[color.light][0]} ${darkColorVariants[color.dark][0]} mx-auto mb-3 after:absolute after:h-4 after:w-[4px] after:left-1/2 after:top-1 after:-ml-[2px] after:rounded-2xl after:opacity-100 after:animate-scroll after:transition-opacity`}
   >
   </figure>
   <figure class={"w-4 mx-auto mb-3"}>
-    <FaChevronDown
-      className={`${colorVariants[color][1]} animate-pulse`}
-    />
+    <FaChevronDown className={`${colorVariants[color.light][1]} ${darkColorVariants[color.dark][1]} animate-pulse`} />
   </figure>
 </a>
 

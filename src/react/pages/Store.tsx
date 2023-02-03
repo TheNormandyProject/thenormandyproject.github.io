@@ -19,12 +19,12 @@ interface StoreNavProps {
 
 const StoreNav = ( props : StoreNavProps ) => {
 
-    const navs : IDictionary<JSX.Element> = {
-        featured: <a href="/store">Featured</a>,
-        limited: <a href="/store/limited">LIMITED</a>,
-        shirts: <a href="/store/shirts">T-Shirts</a>,
-        accessories: <a href="/store/accessories">Accessories</a>,
-        digital: <a href="/store/digital">Digital</a>
+    const navs : IDictionary<JSX.Element | JSX.Element[]> = {
+        featured: <a key={"featured"} aria-label="Go to the store landing page" href="/store">Featured</a>,
+        limited: <a key={"limited"} aria-label="Go to Limited Stock and Availability section of the store" href="/store/limited">LIMITED</a>,
+        clothing: <a key={"clothing"} aria-label="Go to the Clothing section of the store" href="/store/clothing">Clothing</a>,
+        accessories: <a key={"accessories"} aria-label="Go to the Accessories section of the store" href="/store/accessories">Accessories</a>,
+        digital: <a key={"digital"} aria-label="Go to the Digital merchandise and products section of the store" href="/store/digital">Digital</a>
     }
 
     const navsPosition = Object.keys(navs);
@@ -34,8 +34,8 @@ const StoreNav = ( props : StoreNavProps ) => {
     if ( typeof currentPage === "undefined" ) throw new Error("Store page doesn't exist");
 
     const curentPageHeaderLinkPos = navsPosition.indexOf(props.currentPage);
-    const currentPageHeaderLink = <li role="menuitem" className={"select-none border-b-2 border-transparent border-n7-600"}>{currentPage}</li>;
-    const adjacentPageHeaderLink = ( link : ReactNode) => <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>{link}</li>;
+    const currentPageHeaderLink = <li key={"currentPageLink"} role="menuitem" className={"select-none border-b-2 border-transparent border-n7-600"}>{currentPage}</li>;
+    const adjacentPageHeaderLink = ( link : ReactNode, keyIndex : number) => <li key={keyIndex} role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>{link}</li>;
 
     const testCart = [{}, {}, {}];
 
@@ -45,14 +45,14 @@ const StoreNav = ( props : StoreNavProps ) => {
 
     return <header role="menubar" className={"absolute top-0 left-0 bg-slate-900 text-white h-16 w-full"}>
         <nav className={"flex gap-4 items-center h-full py-4 pl-8"}>
-            <a href="/"><NormandyLetterN className={"fill-white hover:fill-n7-600 h-4"} /></a>
+            <a aria-label="Return to the landing page" href="/"><NormandyLetterN className={"fill-white hover:fill-n7-600 h-4"} /></a>
             <span role="separator">|</span>
             <ul role="menu" className={"flex gap-4 items-center h-full"}>
                 <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
-                    <a href="/">Home</a>
+                    <a aria-label="Return to the landing page" href="/">Home</a>
                 </li>
                 <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
-                    <a href="/support">Support</a>
+                    <a aria-label="Support The Normandy Project by donating or setting up a monthly subscription in exchange for benefits!" href="/support">Support Us</a>
                 </li>
             </ul>
             <span role="separator"></span>
@@ -60,7 +60,7 @@ const StoreNav = ( props : StoreNavProps ) => {
                 {
                     Object.values(navs).map((v, i)=>{
                         if ( i === curentPageHeaderLinkPos) return currentPageHeaderLink;
-                        else return adjacentPageHeaderLink(v);
+                        else return adjacentPageHeaderLink(v, i);
                     })
                 }
             </ul>
@@ -70,7 +70,7 @@ const StoreNav = ( props : StoreNavProps ) => {
                     cartMenuOpen
                         ?
                         /* Is open */
-                        <a role="button" className={"flex items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"} onClick={() => {
+                        <a aria-label="Open and close the cart" role="button" className={"flex items-center justify-center bg-n7-800 bg-striped-n7 h-16 w-16 cursor-pointer"} onClick={() => {
                             setCartMenuOpen(!cartMenuOpen);
                             setNavMenuOpen(false);
                         }}>
@@ -78,7 +78,7 @@ const StoreNav = ( props : StoreNavProps ) => {
                         </a>
                         :
                         /* Is closed */
-                        <a role="button" className={"flex items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} onClick={() => {
+                        <a aria-label="Open and close the cart" role="button" className={"flex items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} onClick={() => {
                             setCartMenuOpen(!cartMenuOpen);
                             setNavMenuOpen(false);
                         }}>
@@ -91,7 +91,7 @@ const StoreNav = ( props : StoreNavProps ) => {
                     navMenuOpen
                         ?
                         /* Is open */
-                        <a role="button" className={"flex md:hidden items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"} onClick={() => {
+                        <a aria-label="Open the navigation menu" role="button" className={"flex md:hidden items-center justify-center bg-n7-800 bg-striped-n7 h-16 w-16 cursor-pointer"} onClick={() => {
                             setNavMenuOpen(!navMenuOpen);
                             setCartMenuOpen(false);
                         }}>
@@ -99,7 +99,7 @@ const StoreNav = ( props : StoreNavProps ) => {
                         </a>
                         :
                         /* Is closed */
-                        <a role="button" className={"flex md:hidden items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} onClick={() => {
+                        <a aria-label="Open the navigation menu" role="button" className={"flex md:hidden items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} onClick={() => {
                             setNavMenuOpen(!navMenuOpen);
                             setCartMenuOpen(false);
                         }}>
@@ -110,35 +110,35 @@ const StoreNav = ( props : StoreNavProps ) => {
             </ul>
         </nav>
         {
-            cartMenuOpen === true && <nav id="cart" className={"relative bg-slate-900 border border-n7-800 w-full sm:w-1/2 ml-auto sm:rounded-bl shadow-xl"}>
-                <h3 className={"bg-n7-800 text-white text-2xl p-4 select-none"}>Cart</h3>
+            cartMenuOpen === true && <nav id="cart" className={"relative bg-gradient-to-b from-n7-900 to-n7-600 border border-n7-800 w-full sm:w-1/2 ml-auto sm:rounded-bl shadow-xl"}>
+                <h3 className={"bg-n7-800 bg-striped-n7 text-white text-2xl p-4 select-none"}>Cart</h3>
                 <ul className={"flex flex-col overflow-y-auto"}>
                     {cartItems.map((v, index) => {
-                        return <li key={index} className={"block w-full p-4 select-none cursor-pointer hover:bg-n7-900 hover:text-white"}>
-                            <a className={""}>Test Item</a>;
+                        return <li key={index} className={"block w-full p-4 select-none cursor-pointer hover:bg-green-600 hover:bg-striped-green hover:text-white"}>
+                            <a aria-label="This is a cart item. Tap to visit the product page for the product" className={""}>Test Item</a>;
                         </li>
                     })}
                 </ul>
             </nav>
         }
         {
-            navMenuOpen === true && <nav id="nav-menu" className={"relative bg-slate-900 border border-n7-800 w-full sm:w-1/2 ml-auto sm:rounded-bl shadow-xl"}>
-                <h3 className={"bg-n7-800 text-white text-2xl p-4 select-none"}>Menu</h3>
+            navMenuOpen === true && <nav id="nav-menu" className={"relative bg-gradient-to-b from-n7-900 to-n7-600 border border-n7-800 w-full sm:w-1/2 ml-auto sm:rounded-bl shadow-xl"}>
+                <h3 className={"bg-n7-800 bg-striped-n7 text-white text-2xl p-4 select-none"}>Menu</h3>
                 <ul role="navigation" className={"flex flex-col overflow-y-auto"}>
                     <li>
-                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"} href="/store">Featured</a>
+                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-green-600 hover:bg-striped-green hover:text-white"} href="/store">Featured</a>
                     </li>
                     <li>
-                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"} href="/store/limited">LIMITED</a>
+                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-green-600 hover:bg-striped-green hover:text-white"} href="/store/limited">LIMITED</a>
                     </li>
                     <li>
-                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"} href="/store/shirts">T-Shirts</a>
+                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-green-600 hover:bg-striped-green hover:text-white"} href="/store/shirts">T-Shirts</a>
                     </li>
                     <li>
-                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"} href="/store/accessories">Accessories</a>
+                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-green-600 hover:bg-striped-green hover:text-white"} href="/store/accessories">Accessories</a>
                     </li>
                     <li>
-                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-n7-900 hover:text-white"} href="/store/digital">Digital</a>
+                        <a className={"block w-full p-4 select-none cursor:pointer hover:bg-green-600 hover:bg-striped-green hover:text-white"} href="/store/digital">Digital</a>
                     </li>
                 </ul>
             </nav>
