@@ -52,7 +52,7 @@ export { ErrorBoundary }
 /* LoadingDisc */
 
 import { IconContext } from "react-icons";
-import { FaCircleNotch } from "react-icons/fa";
+import { FaCircleNotch } from "react-icons/fa/index.js";
 
 const LoadingDisc = () => {
 
