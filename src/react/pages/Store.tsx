@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { FaTimes } from "react-icons/fa/index.js";
 import { GiHamburgerMenu, GiStarSattelites, GiShoppingBag, GiClawHammer, GiSparkles } from "react-icons/gi/index.js";
 import { NormandyLetterN } from "../../assets/SVGs";
@@ -8,7 +8,34 @@ import { Digital } from "./sections/Store.Digital";
 import { Limited } from "./sections/Store.Limited";
 import { Shirts } from "./sections/Store.Shirts";
 
-const StoreNav = () => {
+type IDictionary<T, R ={}> = Object & {
+    [ index : number ] : T,
+    [ key : string ] : T
+} & R;
+
+interface StoreNavProps {
+    currentPage : string
+}
+
+const StoreNav = ( props : StoreNavProps ) => {
+
+    const navs : IDictionary<JSX.Element> = {
+        featured: <a href="/store">Featured</a>,
+        limited: <a href="/store/limited">LIMITED</a>,
+        shirts: <a href="/store/shirts">T-Shirts</a>,
+        accessories: <a href="/store/accessories">Accessories</a>,
+        digital: <a href="/store/digital">Digital</a>
+    }
+
+    const navsPosition = Object.keys(navs);
+
+    const currentPage = navs[props.currentPage];
+
+    if ( typeof currentPage === "undefined" ) throw new Error("Store page doesn't exist");
+
+    const curentPageHeaderLinkPos = navsPosition.indexOf(props.currentPage);
+    const currentPageHeaderLink = <li role="menuitem" className={"select-none border-b-2 border-transparent border-n7-600"}>{currentPage}</li>;
+    const adjacentPageHeaderLink = ( link : ReactNode) => <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>{link}</li>;
 
     const testCart = [{}, {}, {}];
 
@@ -19,7 +46,7 @@ const StoreNav = () => {
     return <header role="menubar" className={"absolute top-0 left-0 bg-slate-900 text-white h-16 w-full"}>
         <nav className={"flex gap-4 items-center h-full py-4 pl-8"}>
             <a href="/"><NormandyLetterN className={"fill-white hover:fill-n7-600 h-4"} /></a>
-            <span>|</span>
+            <span role="separator">|</span>
             <ul role="menu" className={"flex gap-4 items-center h-full"}>
                 <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
                     <a href="/">Home</a>
@@ -28,29 +55,22 @@ const StoreNav = () => {
                     <a href="/support">Support</a>
                 </li>
             </ul>
+            <span role="separator"></span>
             <ul role="menu" className={"hidden md:flex items-center gap-4 h-full ml-auto"}>
-                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
-                    <a href="/store">Featured</a>
-                </li>
-                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
-                    <a href="/store/limited">LIMITED</a>
-                </li>
-                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
-                    <a href="/store/shirts">T-Shirts</a>
-                </li>
-                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
-                    <a href="/store/accessories">Accessories</a>
-                </li>
-                <li role="menuitem" className={"select-none border-b-2 border-transparent hover:border-n7-600"}>
-                    <a href="/store/digital">Digital</a>
-                </li>
+                {
+                    Object.values(navs).map((v, i)=>{
+                        if ( i === curentPageHeaderLinkPos) return currentPageHeaderLink;
+                        else return adjacentPageHeaderLink(v);
+                    })
+                }
             </ul>
-            <div className={"ml-auto md:ml-4 flex"}>
+            <ul role="menu" className={"ml-auto md:ml-4 flex"}>
+                <li role="menuitem">
                 {
                     cartMenuOpen
                         ?
                         /* Is open */
-                        <a className={"flex items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"} role="button" onClick={() => {
+                        <a role="button" className={"flex items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"} onClick={() => {
                             setCartMenuOpen(!cartMenuOpen);
                             setNavMenuOpen(false);
                         }}>
@@ -58,18 +78,20 @@ const StoreNav = () => {
                         </a>
                         :
                         /* Is closed */
-                        <a className={"flex items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} role="button" onClick={() => {
+                        <a role="button" className={"flex items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} onClick={() => {
                             setCartMenuOpen(!cartMenuOpen);
                             setNavMenuOpen(false);
                         }}>
                             <GiShoppingBag className={"-mt-1 fill-white"} />
                         </a>
                 }
+                </li>
+                <li role="menuitem">
                 {
                     navMenuOpen
                         ?
                         /* Is open */
-                        <a className={"flex md:hidden items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"} role="button" onClick={() => {
+                        <a role="button" className={"flex md:hidden items-center justify-center bg-n7-800 h-16 w-16 cursor-pointer"} onClick={() => {
                             setNavMenuOpen(!navMenuOpen);
                             setCartMenuOpen(false);
                         }}>
@@ -77,14 +99,15 @@ const StoreNav = () => {
                         </a>
                         :
                         /* Is closed */
-                        <a className={"flex md:hidden items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} role="button" onClick={() => {
+                        <a role="button" className={"flex md:hidden items-center justify-center bg-slate-800 h-16 w-16 cursor-pointer"} onClick={() => {
                             setNavMenuOpen(!navMenuOpen);
                             setCartMenuOpen(false);
                         }}>
                             <GiHamburgerMenu className={"fill-white"} />
                         </a>
                 }
-            </div>
+                </li>
+            </ul>
         </nav>
         {
             cartMenuOpen === true && <nav id="cart" className={"relative bg-slate-900 border border-n7-800 w-full sm:w-1/2 ml-auto sm:rounded-bl shadow-xl"}>
@@ -188,7 +211,7 @@ interface StorePageProps {
 export const StorePage = (props: StorePageProps) => {
 
     return <>
-        <StoreNav />
+        <StoreNav currentPage="featured" />
         {props.category ?? <StoreMain />}
         <StoreFooter />
     </>
